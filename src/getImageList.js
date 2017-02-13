@@ -20,23 +20,23 @@ const getImageList = (nameProduct:string, html: string) => {
   }
   getImageListLog('param "html" is not empty');
   const list = [];
-
   const $ = cheerio.load(html);
-  const links = $('a[data-zoom-id=zoom]');
-
+  const links = $('a');
+  let count = 0;
   links.each((i, link) => {
-    const url = $(link).attr('href');
-    const path = urlapi.parse(url).pathname;
-    const namefile = !path ? '' : path.split('/').pop().split('.');
-    // const name = `${namefile[0]}_${i}.${namefile[1]}`;
-    const name = `${nameProduct}_${i}.${namefile[1]}`;
-    getImageListLog('parse name "%s"', name);
-    // console.log(`name=${name}`);
-    const item = {
-      name,
-      url,
-    };
-    list.push(item);
+    if (/gallery-control/.test($(link))) {
+      const url = $(link).attr('href');
+      const path = urlapi.parse(url).pathname;
+      const namefile = !path ? '' : path.split('/').pop().split('.');
+      const name = `${nameProduct}_${count}.${namefile[1]}`;
+      getImageListLog('parse name "%s"', name);
+      const item = {
+        name,
+        url,
+      };
+      list.push(item);
+      count += 1;
+    }
   });
   return list;
 };

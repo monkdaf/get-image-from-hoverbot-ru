@@ -1,10 +1,10 @@
 {
-  "name": "get-image-from-site",
+  "name": "get-image-from-hoverbot-ru",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
   "bin": {
-    "hexlet": "dist/bin/hexlet.js"
+    "hexlet": "dist/bin/getImages.js"
   },
   "scripts": {
     "test": "jest",
@@ -18,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/monkdaf/get-image-from-site.git"
+    "url": "git+https://github.com/monkdaf/get-image-from-hoverbot-ru.git"
   },
   "author": "Dmitry Fil",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/monkdaf/get-image-from-site/issues"
+    "url": "https://github.com/monkdaf/get-image-from-hoverbot-ru/issues"
   },
-  "homepage": "https://github.com/monkdaf/get-image-from-site#readme",
+  "homepage": "https://github.com/monkdaf/get-image-from-hoverbot-ru#readme",
   "dependencies": {
     "cheerio": "^0.22.0",
     "debug": "^2.6.0",

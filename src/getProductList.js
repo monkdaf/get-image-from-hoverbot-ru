@@ -22,18 +22,17 @@ const getProductList = (html: string) => {
   const list = [];
 
   const $ = cheerio.load(html);
-  const links = $('a[class=image-cover]');
-
+  const links = $('div[class=product-title]');
   links.each((i, link) => {
-    let url = $(link).attr('href');
+    const goal = $(link).find('h3').find('a');
+    let url = $(goal).attr('href');
     if (/http/.exec(url) === null) {
-      url = `http://gyrotown.ru${url}`;
+      url = `http://www.hoverbot.ru${url}`;
     }
     const path = urlapi.parse(url).pathname;
     const name = !path ? '' : path.split('/').pop();
 
     getProductListLog('parse name "%s"', name);
-    // console.log(`name=${name}`);
     const item = {
       name,
       url,

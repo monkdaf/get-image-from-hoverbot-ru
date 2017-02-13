@@ -13,24 +13,42 @@ describe('Tests for getProductList', () => {
   });
 
   const oneTag = `
-  <a class="image-cover" href="/product/giroskuter-hoverbot-a8-ugolno-chernyy" onclick="datalayerclk(780082, Гироскутер Hoverbot С1 (A8) карбон (угольно-черный), 20750.0, Hoverbot, Гироскутер, 13,6 кг, 1)">
+  <div class="product-title">
+      <h3>
+        <a href="/product/cegvey-hoverbot-g-6">
+          Cегвей Hoverbot G-6
+        </a>
+      </h3>
+    </div>
   `;
   const oneTagReturn =
     [
-      { name: 'giroskuter-hoverbot-a8-ugolno-chernyy', url: '/product/giroskuter-hoverbot-a8-ugolno-chernyy' },
+      { name: 'cegvey-hoverbot-g-6', url: 'http://www.hoverbot.ru/product/cegvey-hoverbot-g-6' },
     ];
   test('body have only one right tag', () => {
     expect(JSON.stringify(getProductList(oneTag))).toBe(JSON.stringify(oneTagReturn));
   });
 
   const twoTag = `
-  <a class="image-cover" href="/product/giroskuter-hoverbot-a8-ugolno-chernyy" onclick="datalayerclk(780082, Гироскутер Hoverbot С1 (A8) карбон (угольно-черный), 20750.0, Hoverbot, Гироскутер, 13,6 кг, 1)">
-  <a class="image-cover" href="/product/giroskuter-hoverbot-b-9-kamuflyazh" onclick="datalayerclk(780438, Гироскутер Hoverbot B 9 камуфляж, 23380.0, Hoverbot, Гироскутер, 16,5 кг, 2)">
+  <div class="product-title">
+      <h3>
+        <a href="/product/cegvey-hoverbot-g-6">
+          Cегвей Hoverbot G-6
+        </a>
+      </h3>
+    </div>
+  <div class="product-title">
+    <h3>
+      <a href="/product/hoverbot-itank-pro">
+        Hoverbot iTank PRO
+      </a>
+    </h3>
+  </div>
   `;
   const twoTagReturn =
     [
-      { name: 'giroskuter-hoverbot-a8-ugolno-chernyy', url: '/product/giroskuter-hoverbot-a8-ugolno-chernyy' },
-      { name: 'giroskuter-hoverbot-b-9-kamuflyazh', url: '/product/giroskuter-hoverbot-b-9-kamuflyazh' },
+      { name: 'cegvey-hoverbot-g-6', url: 'http://www.hoverbot.ru/product/cegvey-hoverbot-g-6' },
+      { name: 'hoverbot-itank-pro', url: 'http://www.hoverbot.ru/product/hoverbot-itank-pro' },
     ];
   test('body have only two right tag', () => {
     expect(JSON.stringify(getProductList(twoTag))).toBe(JSON.stringify(twoTagReturn));
